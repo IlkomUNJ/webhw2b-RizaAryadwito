@@ -1,0 +1,17 @@
+@layout.login({title : 'Login'})
+
+@slot('main')
+    <div class="login-box">
+        <h2>Login</h2>
+        
+        <form action="/home" method="GET">
+            <button type="submit">Login as Buyer</button>
+        </form>
+        
+        <form action="/seller/dashboard" method="GET">
+            <button type="submit">Login as Seller</button>
+        </form>
+
+    </div>
+@endslot
+@end

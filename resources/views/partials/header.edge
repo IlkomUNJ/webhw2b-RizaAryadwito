@@ -1,0 +1,37 @@
+<div class="MainContainer">
+    <header class="wrapper-navbar">
+        <ul class="left-nav">
+        <li><img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo"></li>
+    
+        <li>
+            <a href="/home" @if(current = '/') = active @endif>Home</a>
+        </li>
+    
+        <li>
+            <a href="/game" @if(current = '/game') = active @endif>Game</a>
+        </li>
+    
+        <li>
+            <a href="/news" @if(current = '/news') = active @endif>News</a>
+        </li>
+    
+        <li>
+            <a href="/promo" @if(current = '/promo') = active @endif>Promo</a>
+        </li>
+        </ul>
+    
+        <ul class="right-nav">
+            <li class="cart">
+                <a href="/cart">
+                <img src="{{ asset('images/cart.png') }}" alt="shopping cart">
+        </a>
+            </li>
+        <li>
+            <input type="search" placeholder="      search...">
+        </li>
+        <li class="login-btn">
+            <a href="/" @if(current = '/login') = active @endif>Logout</a>
+        </li>
+        </ul>
+    </header>
+  

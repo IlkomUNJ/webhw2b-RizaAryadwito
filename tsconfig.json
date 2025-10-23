@@ -1,0 +1,51 @@
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Path Aliases
+    |--------------------------------------------------------------------------
+    |
+    | INI BAGIAN YANG HILANG. 
+    | Ini memberi tahu TypeScript di mana menemukan alias seperti #controllers, dll.
+    |
+    */
+    "paths": {
+      "#controllers/*": ["./app/controllers/*"],
+      "#exceptions/*": ["./app/exceptions/*"],
+      "#models/*": ["./app/models/*"],
+      "#mails/*": ["./app/mails/*"],
+      "#services/*": ["./app/services/*"],
+      "#listeners/*": ["./app/listeners/*"],
+      "#events/*": ["./app/events/*"],
+      "#middleware/*": ["./app/middleware/*"],
+      "#validators/*": ["./app/validators/*"],
+      "#providers/*": ["./providers/*"],
+      "#database/*": ["./database/*"],
+      "#start/*": ["./start/*"],
+      "#config/*": ["./config/*"],
+      "#tests/*": ["./tests/*"],
+      "#types/*": ["./types/*"]
+    }
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | Include/Exclude
+  |--------------------------------------------------------------------------
+  |
+  | Ini juga penting agar TypeScript tahu file mana yang harus 
+  | diperiksa dan mana yang harus diabaikan.
+  |
+  */
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

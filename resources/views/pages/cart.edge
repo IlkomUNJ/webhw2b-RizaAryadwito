@@ -1,0 +1,94 @@
+@layout.cart({ title: 'Shopping Cart' })
+
+@slot('main')
+<div class="cart-page-container">
+    <h1>Your Shopping Cart</h1>
+
+    @if(items && items.length > 0)
+
+        <div class="cart-layout">
+            
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(item in items)
+                    <tr>
+                        <td class="col-image">
+                            <img 
+                              src="{{ item.image_url || item.image || 'https://via.placeholder.com/80' }}" 
+                              alt="{{ item.name }}" 
+                              class="cart-item-image"
+                            >
+                        </td>
+                        <td class="col-name">
+                            <span>{{ item.name }}</span>
+                        </td>
+                        <td>Rp {{ item.price.toLocaleString('id-ID') }}</td>
+                        <td>
+
+                            {{ item.quantity }}
+                        </td>
+                        <td>
+ 
+                            Rp {{ (item.price * item.quantity).toLocaleString('id-ID') }}
+                        </td>
+                        <td>
+
+                            <form action="/cart/remove/{{ item.id }}" method="POST">
+                                {{ csrfField() }}
+                                <button type="submit" class="btn-remove">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endeach
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>Rp {{ total.toLocaleString('id-ID') }}</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Tax (0%)</span>
+                    <span>Rp 0</span>
+                </div>
+                
+                <hr>
+                
+                <div class="summary-row total-row">
+                    <strong>Total</strong>
+                    <strong>Rp {{ total.toLocaleString('id-ID') }}</strong>
+                </div>
+
+                <button type="submit" class="btn-checkout">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+
+    @else
+
+        <div class="cart-empty">
+            <p>Your cart is currently empty.</p>
+            <a href="{{ route('home') }}" class="btn-primary">
+                Continue Shopping
+            </a>
+        </div>
+        
+    @endif
+
+</div>
+@endslot
+@end
